@@ -1,0 +1,70 @@
+﻿.widget {
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    border: 1px solid #2c2c2c;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+
+#dashboard {
+    columns: 3 280px; /* количество колонок + минимальная ширина */
+    column-gap: 20px;
+    padding: 20px;
+}
+.widget-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+.close-btn {
+
+    border: none;
+
+    background: crimson;
+
+    color: white;
+
+    padding: 5px 10px;
+}
+
+.task-input {
+
+    width: 100%;
+
+    padding: 8px;
+
+    margin-bottom: 10px;
+}
+
+.task-btn {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.task-list {
+    list-style: none;
+}
+
+.task-list li {
+    margin: 5px 0;
+}
+
+.avatar {
+
+    width: 80px;
+
+    border-radius: 50%;
+
+    margin-bottom: 10px;
+}
+
+.match {
+    padding: 8px;
+    border-bottom: 1px solid #333;
+}

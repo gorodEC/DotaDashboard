@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: white;
+    padding: 20px;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+button {
+    cursor: pointer;
+    padding: 10px;
+}
+
+#dashboard {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(300px, 1fr)
+        );
+
+    gap: 20px;
+}
