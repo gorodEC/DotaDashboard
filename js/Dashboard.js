@@ -10,10 +10,22 @@ export default class Dashboard {
         this.widgets = [];
     }
 
+    updateLayout() {
+    this.widgets.forEach(widget => {
+        const el = widget.element;
+
+        const rowHeight = 10;
+        const height = el.scrollHeight;
+
+        const span = Math.ceil(height / rowHeight);
+
+        el.style.gridRowEnd = `span ${span}`;
+    });
+}
     addWidget(widgetType) {
 
         const id = Date.now();
-
+     
         let widget;
 
         switch (widgetType) {
@@ -39,6 +51,15 @@ export default class Dashboard {
         }
 
         const element = widget.render();
+     this.container.appendChild(element);
+
+requestAnimationFrame(() => {
+    this.updateLayout();
+    this.updateLayout = debounce(this.updateLayout.bind(this), 50);
+});
+      
+
+   
 
         const closeBtn =
             element.querySelector(".close-btn");
@@ -53,8 +74,10 @@ export default class Dashboard {
         this.widgets.push(widget);
 
         this.container.appendChild(element);
+        
+   
     }
-
+    
     removeWidget(widgetId) {
 
         const widget =
@@ -71,4 +94,38 @@ export default class Dashboard {
                 widget => widget.id !== widgetId
             );
     }
+updateLayout() {
+
+    const rowHeight = parseInt(
+        getComputedStyle(this.container)
+        .getPropertyValue("grid-auto-rows")
+    );
+
+    const gap = parseInt(
+        getComputedStyle(this.container)
+        .getPropertyValue("gap")
+    );
+
+    this.container.querySelectorAll(".widget").forEach(widget => {
+
+        // сброс перед пересчётом
+        widget.style.gridRowEnd = "auto";
+
+        const height = widget.getBoundingClientRect().height;
+
+        const span = Math.ceil(
+            (height + gap) / (rowHeight + gap)
+        );
+
+        widget.style.gridRowEnd = `span ${span}`;
+    });
+}
+
+}
+function debounce(fn, delay = 100) {
+    let t;
+    return (...args) => {
+        clearTimeout(t);
+        t = setTimeout(() => fn(...args), delay);
+    };
 }

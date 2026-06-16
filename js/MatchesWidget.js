@@ -38,6 +38,14 @@ export default class MatchesWidget extends UIComponent {
             matches,
             heroMap
         };
+        this.loadData().then(() => {
+
+    content.innerHTML = "...";
+
+    requestAnimationFrame(() => {
+        window.dashboard.updateLayout();
+    });
+});
     }
 
     render() {

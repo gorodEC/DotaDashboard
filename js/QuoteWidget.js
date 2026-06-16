@@ -6,7 +6,7 @@ export default class QuoteWidget extends UIComponent {
 
         super({
             id,
-            title: "Dota Quote"
+            title: "Мотивация"
         });
 
         this.quotes = [
